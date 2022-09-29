@@ -1,0 +1,36 @@
+name: 'Action For Semantic Release'
+description: 'GitHub Action for Semantic Release'
+author: 'cycjimmy'
+branding:
+  icon: 'package'
+  color: 'orange'
+inputs:
+  package_version:
+    required: false
+    description: 'NPM package version to use to compare with proposed new tokens.'
+  branches:
+    required: false
+    description: 'The branches on which diff should happen.'
+  token_file_path:
+    required: false
+    description: 'The file path to the json file containing the design tokens. If not specified, this action will look for `tokens` property in the project's `package.json` file.'
+outputs:
+  new_release_published:
+    description: 'Whether a new release was published'
+  new_release_version:
+    description: 'Version of the new release'
+  new_release_major_version:
+    description: 'Major version of the new release'
+  new_release_minor_version:
+    description: 'Minor version of the new release'
+  new_release_patch_version:
+    description: 'Patch version of the new release'
+  new_release_channel:
+    description: 'The distribution channel on which the last release was initially made available (undefined for the default distribution channel).'
+  new_release_notes:
+    description: 'The release notes for the new release.'
+  last_release_version:
+    description: 'Version of the previous release, if there was one.'
+runs:
+  using: 'node16'
+  main: 'index.js'
